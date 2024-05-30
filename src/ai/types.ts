@@ -14,9 +14,13 @@ export enum SupportedAIEngines {
     TULIP_SOLUTION_1
 }
 
-export interface OpenAIRequestModel{
+export interface IAIRequestModel {
+    type: SupportedAIEngines ;
+}
+
+export class OpenAIRequestModel implements IAIRequestModel{
     type: SupportedAIEngines.OPEN_AI;
     chatMessages: OpenAIMessageFormat[]
 }
 
-export type AIChatRequest = OpenAIRequestModel | Object;
+export type AIChatRequest = OpenAIRequestModel | IAIRequestModel;
